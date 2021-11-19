@@ -1,8 +1,8 @@
-<?php 
+<?php
 
 include 'header.php';
 
- ?>
+?>
 
 <div id="wrapper">
 
@@ -33,24 +33,41 @@ include 'header.php';
                             <hr>
                             <form action="pencarian.php" method="POST">
                                 <div class="form-group row">
+                                    <label class="col-md-4"><b>Prodi Pilihan</b></label>
+                                    <select name='prodi' class='form-control col-md-8' required>
+                                        <option value="">~ Pilih Program Studi ~</option>
+
+                                        <?php
+include 'koneksi.php';
+
+$sql = mysqli_query($conn, "SELECT DISTINCT nama_prodi, kd_prodi FROM prodi ");
+
+while ($prodi = mysqli_fetch_array($sql)) {?>
+
+                                        <option value="<?=$prodi['nama_prodi']?>">
+                                            <?php echo $prodi['nama_prodi']; ?></option>
+
+                                        <?php }?>
+                                    </select>
+                                </div>
+                                <hr>
+                                <div class="form-group row">
                                     <label class="col-md-4"><b>Asal Jurusan SMA/SMK</b></label>
                                     <select name='asal_jurusan' class='form-control col-md-8' required>
                                         <option value="">~ Pilih Sub Kriteria ~</option>
 
-                                        <?php 
-                    include 'koneksi.php';
+                                        <?php
+include 'koneksi.php';
 
-                $sql = mysqli_query($conn, "SELECT * FROM kriteria AS kr INNER JOIN subkriteria AS sk ON kr.kd_kriteria = sk.kd_kriteria  where kr.nama_kriteria like '%asal jurusan%' ORDER BY sk.nama_sub");
+$sql = mysqli_query($conn, "SELECT * FROM kriteria AS kr INNER JOIN subkriteria AS sk ON kr.kd_kriteria = sk.kd_kriteria  where kr.nama_kriteria like '%asal jurusan%' ORDER BY sk.nama_sub");
 
-
-
-                    while ( $r = mysqli_fetch_array($sql)) { ?>
+while ($r = mysqli_fetch_array($sql)) {?>
 
                                         <option
                                             value="<?php echo $r['bobot']; ?>,<?php echo $r['nilai']; ?>,<?php echo $r['nama_sub'] ?>">
                                             <?php echo $r['nama_sub']; ?></option>
 
-                                        <?php } ?>
+                                        <?php }?>
                                     </select>
                                 </div>
                                 <hr>
@@ -61,18 +78,18 @@ include 'header.php';
                                     <select name='a_prodi' class='form-control col-md-8' required>
                                         <option value="">~ Pilih Sub Kriteria ~</option>
 
-                                        <?php 
-                    include 'koneksi.php';
+                                        <?php
+include 'koneksi.php';
 
-                $sql = mysqli_query($conn, "SELECT * FROM kriteria AS kr INNER JOIN subkriteria AS sk ON kr.kd_kriteria = sk.kd_kriteria  where kr.nama_kriteria like '%akreditasi program studi%' ORDER BY sk.nama_sub");
+$sql = mysqli_query($conn, "SELECT * FROM kriteria AS kr INNER JOIN subkriteria AS sk ON kr.kd_kriteria = sk.kd_kriteria  where kr.nama_kriteria like '%akreditasi program studi%' ORDER BY sk.nama_sub");
 
-                    while ( $r = mysqli_fetch_array($sql)) { ?>
+while ($r = mysqli_fetch_array($sql)) {?>
 
                                         <option
                                             value="<?php echo $r['bobot']; ?>,<?php echo $r['nilai']; ?>,<?php echo $r['nama_sub'] ?>">
                                             <?php echo $r['nama_sub']; ?></option>
 
-                                        <?php } ?>
+                                        <?php }?>
                                     </select>
                                 </div>
                                 <hr>
@@ -83,16 +100,16 @@ include 'header.php';
                                     <select name='a_kampus' class='form-control col-md-8' required>
                                         <option value="">~ Pilih Sub Kriteria ~</option>
 
-                                        <?php 
-                    include 'koneksi.php';
-                $sql = mysqli_query($conn, "SELECT * FROM kriteria AS kr INNER JOIN subkriteria AS sk ON kr.kd_kriteria = sk.kd_kriteria  where kr.nama_kriteria like '%akreditasi kampus%' ORDER BY sk.nama_sub");
-                    while ( $r = mysqli_fetch_array($sql)) { ?>
+                                        <?php
+include 'koneksi.php';
+$sql = mysqli_query($conn, "SELECT * FROM kriteria AS kr INNER JOIN subkriteria AS sk ON kr.kd_kriteria = sk.kd_kriteria  where kr.nama_kriteria like '%akreditasi kampus%' ORDER BY sk.nama_sub");
+while ($r = mysqli_fetch_array($sql)) {?>
 
                                         <option
                                             value="<?php echo $r['bobot']; ?>,<?php echo $r['nilai']; ?>,<?php echo $r['nama_sub'] ?>">
                                             <?php echo $r['nama_sub']; ?></option>
 
-                                        <?php } ?>
+                                        <?php }?>
                                     </select>
                                 </div>
                                 <hr>
@@ -103,16 +120,16 @@ include 'header.php';
                                     <select name='spp' class='form-control col-md-8' required>
                                         <option value="">~ Pilih Sub Kriteria ~</option>
 
-                                        <?php 
-                    include 'koneksi.php';
-                $sql = mysqli_query($conn, "SELECT * FROM kriteria AS kr INNER JOIN subkriteria AS sk ON kr.kd_kriteria = sk.kd_kriteria  where kr.nama_kriteria like '%spp%' ORDER BY sk.nama_sub");
-                    while ( $r = mysqli_fetch_array($sql)) { ?>
+                                        <?php
+include 'koneksi.php';
+$sql = mysqli_query($conn, "SELECT * FROM kriteria AS kr INNER JOIN subkriteria AS sk ON kr.kd_kriteria = sk.kd_kriteria  where kr.nama_kriteria like '%spp%' ORDER BY sk.nama_sub");
+while ($r = mysqli_fetch_array($sql)) {?>
 
                                         <option
                                             value="<?php echo $r['bobot']; ?>,<?php echo $r['nilai']; ?>,<?php echo $r['nama_sub'] ?>">
                                             <?php echo $r['nama_sub']; ?></option>
 
-                                        <?php } ?>
+                                        <?php }?>
                                     </select>
                                 </div>
                                 <hr>
@@ -125,23 +142,23 @@ include 'header.php';
                                     <select name='fasilitas' class='form-control col-md-8' required>
                                         <option value="">~ Pilih Sub Kriteria ~</option>
 
-                                        <?php 
-                    include 'koneksi.php';
-                $sql = mysqli_query($conn, "SELECT * FROM kriteria AS kr INNER JOIN subkriteria AS sk ON kr.kd_kriteria = sk.kd_kriteria  where kr.nama_kriteria like '%fasilitas%' ORDER BY sk.nama_sub");
-                    while ( $r = mysqli_fetch_array($sql)) { ?>
+                                        <?php
+include 'koneksi.php';
+$sql = mysqli_query($conn, "SELECT * FROM kriteria AS kr INNER JOIN subkriteria AS sk ON kr.kd_kriteria = sk.kd_kriteria  where kr.nama_kriteria like '%fasilitas%' ORDER BY sk.nama_sub");
+while ($r = mysqli_fetch_array($sql)) {?>
 
                                         <option
                                             value="<?php echo $r['bobot']; ?>,<?php echo $r['nilai']; ?>,<?php echo $r['nama_sub'] ?>">
                                             <?php echo $r['nama_sub']; ?></option>
 
-                                        <?php } ?>
+                                        <?php }?>
                                     </select>
                                 </div>
                                 <hr>
 
 
 
-                                
+
 
                                 <button class="btn btn-success btn-block" name="proses6" type="submit">Cari</button>
 
@@ -158,59 +175,61 @@ include 'header.php';
 
             <!-- DataTables Example -->
             <!-- <div class="card mb-3" id="prodi">
-            <div class="card-header">
-              <i class="fas fa-table"> </i>
-              DATA PROGRAM STUDI</div>
-            <div class="card-body">
+                <div class="card-header">
+                    <i class="fas fa-table"> </i>
+                    DATA PROGRAM STUDI
+                </div>
+                <div class="card-body">
 
 
-               <div class="table-responsive">
+                    <div class="table-responsive">
 
-                <table class="text-center table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>No.</th>
-                      <th>Nama Prodi</th>
-                      <th>AKSI</th>
-                    </tr>
-                  </thead>
+                        <table class="text-center table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Nama Prodi</th>
+                                    <th>AKSI</th>
+                                </tr>
+                            </thead>
 
-                  <tbody>
+                            <tbody>
 
-                <?php 
-                include 'koneksi.php';
+                                <?php
+include 'koneksi.php';
 
-                $no = 1;
+$no = 1;
 
-                $sql = mysqli_query($conn, "SELECT DISTINCT nama_prodi FROM prodi ");
-                while($data = mysqli_fetch_array($sql)) {
+$sql = mysqli_query($conn, "SELECT DISTINCT nama_prodi FROM prodi ");
+while ($data = mysqli_fetch_array($sql)) {
 
-                 ?>
+    ?>
 
-                    <tr>
-                      <td><?php echo $no; ?></td>
-                      <td><?php echo $data['nama_prodi']; ?></td>
-                      <td class="text-center">
-                          <form action="detail_pencarian.php" method="post">
-                            <input type="hidden" name="nama_prodi" value="<?php echo $data['nama_prodi']; ?>">
-                          <button class="btn btn-sm btn-primary" type="submit" name="detail">
-                            Kriteria Pencarian
-                          </button>
-                          </form>
-                    </td>
+                                <tr>
+                                    <td><?php echo $no; ?></td>
+                                    <td><?php echo $data['nama_prodi']; ?></td>
+                                    <td class="text-center">
+                                        <form action="detail_pencarian.php" method="post">
+                                            <input type="hidden" name="nama_prodi"
+                                                value="<?php echo $data['nama_prodi']; ?>">
+                                            <button class="btn btn-sm btn-primary" type="submit" name="detail">
+                                                Kriteria Pencarian
+                                            </button>
+                                        </form>
+                                    </td>
 
-                    </tr>
-<?php $no++; } ?>
-                  </tbody>
+                                </tr>
+                                <?php $no++;}?>
+                            </tbody>
 
-                </table>
+                        </table>
 
-              </div>
-              
+                    </div>
 
-            </div>
 
-        </div> -->
+                </div>
+
+            </div> -->
             <!-- /.container-fluid -->
 
         </div>
