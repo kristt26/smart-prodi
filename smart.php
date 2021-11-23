@@ -119,8 +119,11 @@ while ($r = mysqli_fetch_array($sql)) {?>
                                     <label class="col-md-4"><b>SPP</b></label>
                                     <select name='spp' class='form-control col-md-8' required>
                                         <option value="">~ Pilih Sub Kriteria ~</option>
+                                        <option value="2000000 - 3000000">Rp. 2.000.000 - Rp. 3.000.000</option>
+                                        <option value="3100000 - 4000000">Rp. 3.100.000 - Rp. 4.000.000</option>
+                                        <option value="4100000 - 4000000">Rp. 4.100.000 - Rp. 5.000.000</option>
 
-                                        <?php
+                                        <!-- <?php
 include 'koneksi.php';
 $sql = mysqli_query($conn, "SELECT * FROM kriteria AS kr INNER JOIN subkriteria AS sk ON kr.kd_kriteria = sk.kd_kriteria  where kr.nama_kriteria like '%spp%' ORDER BY sk.nama_sub");
 while ($r = mysqli_fetch_array($sql)) {?>
@@ -129,7 +132,7 @@ while ($r = mysqli_fetch_array($sql)) {?>
                                             value="<?php echo $r['bobot']; ?>,<?php echo $r['nilai']; ?>,<?php echo $r['nama_sub'] ?>">
                                             <?php echo $r['nama_sub']; ?></option>
 
-                                        <?php }?>
+                                        <?php }?> -->
                                     </select>
                                 </div>
                                 <hr>

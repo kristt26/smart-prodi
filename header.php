@@ -1,10 +1,8 @@
-<?php 
-
+<?php
 
 session_start();
 
-
- ?>
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +27,7 @@ session_start();
     <link href="pts/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="pts/css/sb-admin.css" rel="stylesheet">
 
 </head>
 

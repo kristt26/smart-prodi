@@ -41,6 +41,7 @@ include 'header.php';
                       <th>SPP</th>
                       <th>Fasilitas</th>
                       <th>Nilai Akhir</th> -->
+                                <th>Kode PTS</th>
                                 <th>Nama Universitas</th>
                                 <th>Keunggulan</th>
                                 <th>Rekomendasi</th>
@@ -55,7 +56,7 @@ include 'koneksi.php';
 $subkriteria1 = explode(',', $_POST['a_kampus']);
 $subkriteria2 = explode(',', $_POST['a_prodi']);
 $subkriteria3 = explode(',', $_POST['asal_jurusan']);
-$subkriteria4 = explode(',', $_POST['spp']);
+$subkriteria4 = explode('-', $_POST['spp']);
 $subkriteria5 = explode(',', $_POST['fasilitas']);
 // $subkriteria6 = explode(',', $_POST['kd_prodi']);
 
@@ -70,10 +71,19 @@ $namasub2 = $subkriteria2[2];
 $bobot3 = $subkriteria3[0];
 $nilai3 = $subkriteria3[1];
 $namasub3 = $subkriteria3[2];
-
-$bobot4 = $subkriteria4[0];
-$nilai4 = $subkriteria4[1];
-$namasub4 = $subkriteria4[2];
+if ((float) $subkriteria4[0] == 2000000 && (float) $subkriteria4[1] == 3000000) {
+    $bobot4 = 48;
+    $nilai4 = 10;
+    $namasub4 = $_POST['spp'];
+} elseif ((float) $subkriteria4[0] == 3100000 && (float) $subkriteria4[1] == 4000000) {
+    $bobot4 = 48;
+    $nilai4 = 9;
+    $namasub4 = $_POST['spp'];
+} else {
+    $bobot4 = 48;
+    $nilai4 = 8;
+    $namasub4 = $_POST['spp'];
+}
 
 $bobot5 = $subkriteria5[0];
 $nilai5 = $subkriteria5[1];
@@ -140,16 +150,25 @@ $ab2 = $a2 - $b2;
 $ab3 = $a3 - $b3;
 $ab4 = $a4 - $b4;
 $ab5 = $a5 - $b5;
-
+$set = [];
 while ($data = mysqli_fetch_array($sql)) {
+    $setValue = false;
+    foreach ($set as $key => $value) {
+        if ($data['kd_pts'] == $value['kd_pts']) {
+            $setValue = true;
+        }
+    }
+    if (!$setValue) {
+        array_push($set, $data);
 
-    ?>
+        ?>
 
                             <tr>
                                 <td><?php echo $no; ?></td>
                                 <td><?php echo $data['kd_prodi']; ?></td>
                                 <td><a href="#" data-toggle='modal'
                                         data-target='#prodi'><?php echo $data['nama_prodi']; ?></a></td>
+                                <td><?php echo $data['kd_pts']; ?></td>
                                 <!-- <td><?php echo substr($data['a_kampus'] / 126 * ($data['sub_a_kampus'] - $b1) / $ab1, 0, 8); ?></td>
                       <td><?php echo substr($data['a_prodi'] / 126 * ($data['sub_a_prodi'] - $b2) / $ab2, 0, 8); ?></td>
                       <td><?php echo substr($data['asal_jurusan'] / 126 * ($data['sub_asal_jurusan'] - $b3) / $ab3, 0, 8); ?></td>
@@ -170,9 +189,9 @@ while ($data = mysqli_fetch_array($sql)) {
                                 <td>
                                     <?php
 $kode = $data['kd_pts'];
-    $dt = mysqli_query($conn, "SELECT * FROM pts where kd_pts = '$kode' ");
-    $dat = mysqli_fetch_array($dt);
-    ?>
+        $dt = mysqli_query($conn, "SELECT * FROM pts where kd_pts = '$kode' ");
+        $dat = mysqli_fetch_array($dt);
+        ?>
                                     <a href="#" data-toggle='modal'
                                         data-target='#universitas'><?php echo $dat['nama_pts'] ?></a>
 
@@ -329,7 +348,12 @@ $kode = $data['kd_pts'];
                                 </td>
 
                             </tr>
-                            <?php $no++;}?>
+                            <?php
+$no++;
+    }
+}
+
+?>
                         </tbody>
 
                     </table>

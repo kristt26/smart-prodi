@@ -1,8 +1,8 @@
-<?php 
+<?php
 
 include 'header.php';
 
- ?>
+?>
 
 <div id="wrapper">
 
@@ -21,19 +21,22 @@ include 'header.php';
             </ol>
             <div class="row">
                 <div class="col-md-12 mb-3">
-                  <div class="card bg-light">
-                    <img class="card-img-top" src="holder.js/100x180/" alt="">
-                    <div class="card-body">
-                      <h4 class="card-title text-center">SISTEM PENDUKUNG KEPUTUSAN PEMILIHAN PROGRAM STUDI PADA PERGURUAN TINGGI SWASTA DI KOTA JAYAPURA MENGGUNAKAN METODE SMART BERBASIS WEB</h4>
-                      <!-- <p class="card-text">Text</p> -->
+                    <div class="card bg-light">
+                        <img class="card-img-top" src="holder.js/100x180/" alt="">
+                        <div class="card-body">
+                            <h4 class="card-title text-center">SISTEM PENDUKUNG KEPUTUSAN PEMILIHAN PROGRAM STUDI PADA
+                                PERGURUAN TINGGI SWASTA DI KOTA JAYAPURA MENGGUNAKAN METODE SMART BERBASIS WEB</h4>
+                            <div class="card">
+                                <img class="card-img-top" src="pts/logo.png" alt="">
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
             </div>
         </div>
-        </div>
-
     </div>
+
+</div>
 
 </div>
 
