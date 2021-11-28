@@ -71,6 +71,23 @@ while ($prodi = mysqli_fetch_array($sql)) {?>
                             <input type="text" class="form-control col-md-8" name="akreditasi">
                         </div>
                         <hr>
+                        <div class="form-group row">
+                            <label class="col-md-4"><b>SPP</b></label>
+                            <input type="number" class="form-control col-md-8" name="spp">
+                        </div>
+                        <hr>
+
+                        <div class="form-group row">
+                            <label class="col-md-4"><b>Visi</b></label>
+                            <input type="text" class="form-control col-md-8" name="visi">
+                        </div>
+                        <hr>
+
+                        <div class="form-group row">
+                            <label class="col-md-4"><b>Misi</b></label>
+                            <input type="text" class="form-control col-md-8" name="misi">
+                        </div>
+                        <hr>
 
                         <div class="form-group row">
                             <label class="col-md-4"><b>Kelebihan</b></label>

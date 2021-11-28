@@ -112,9 +112,9 @@ include 'header.php';
                                                         <label for="staticEmail"
                                                             class="col-sm-4 col-form-label  text-left">Fasilitas</label>
                                                         <div class="col-sm-8">
-                                                            <input type="text" readonly class="form-control-plaintext"
-                                                                id="staticEmail"
-                                                                value=": <?= $dat['fasilitas_kampus'];?>">
+                                                            <textarea name="" readonly class="form-control-plaintext"
+                                                                id="staticEmail" rows="4"
+                                                                value=": <?= $dat['fasilitas_kampus'];?>">: <?= $dat['fasilitas_kampus'];?></textarea>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -143,10 +143,33 @@ include 'header.php';
                                         $dat = mysqli_fetch_array($dt);
                                         $dt_prodi = mysqli_query($conn, "SELECT * FROM prodi where kd_prodi = '$kode_prodi'"); 
                                         $datProdi = mysqli_fetch_array($dt_prodi);
+                                        $q_kriteria = mysqli_query($conn, "SELECT * FROM kriteria"); 
+                                        while ($dt_kriteria = mysqli_fetch_array($q_kriteria)) {
+                                            $semua = 0;
+                                            $sub_spp = 0;
+                                            $q_alternatif = mysqli_query($conn, "SELECT * FROM alternatif_kriteria where kd_prodi = '$kode_prodi'");
+                                            while ($s = mysqli_fetch_array($q_alternatif)) {
+                                                if($s['sub_asal_jurusan']==10){
+                                                    $semua = 10;
+                                                }else{
+                                                    $semua = 9;
+                                                }
+
+                                                if($s['sub_asal_jurusan']==10){
+                                                    $sub_spp=10; 
+                                                }else if($s['sub_asal_jurusan']==9){
+                                                    $sub_spp=9; 
+                                                }else {
+                                                    $sub_spp=8; 
+                                                }
+                                            }
+                                        }
                                         ?>
                                 <button type="button" class="list-group-item list-group-item-action"><a
-                                        href="javascript:void();" data-toggle="modal" data-target="#<?= $x['kd_prodi']?>"><?= $x['nama_prodi']?></a> | <a
-                                        href="javascript:void();" data-toggle="modal" data-target="#<?= $x['kd_pts'].$x['kd_prodi']?>"><?= $x['nama_pts'];?></a></button>
+                                        href="javascript:void();" data-toggle="modal"
+                                        data-target="#<?= $x['kd_prodi']?>"><?= $x['nama_prodi']?></a> | <a
+                                        href="javascript:void();" data-toggle="modal"
+                                        data-target="#<?= $x['kd_pts'].$x['kd_prodi']?>"><?= $x['nama_pts'];?></a></button>
                                 <div class="modal fade" id="<?= $x['kd_prodi']?>" tabindex="-1" role="dialog"
                                     aria-labelledby="modelTitleId" aria-hidden="true">
                                     <div class="modal-dialog modal-lg" role="document">
@@ -174,15 +197,53 @@ include 'header.php';
                                                             class="col-sm-4 col-form-label  text-left">Akreditasi</label>
                                                         <div class="col-sm-8">
                                                             <input type="text" readonly class="form-control-plaintext"
-                                                                id="staticEmail" value=": <?= $datProdi['akreditasi'];?>">
+                                                                id="staticEmail"
+                                                                value=": <?= $datProdi['akreditasi'];?>">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label for="staticEmail"
-                                                            class="col-sm-4 col-form-label  text-left">Kelebihan</label>
+                                                            class="col-sm-4 col-form-label  text-left">Asal di SMA/SMK
+                                                        </label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" readonly class="form-control-plaintext"
+                                                                id="staticEmail"
+                                                                value=": <?= $semua == 10 ? 'Semua Jurusan' : 'IPA, IPS, Bahasa' ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="staticEmail"
+                                                            class="col-sm-4 col-form-label  text-left">SPP Per Semester
+                                                        </label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" readonly class="form-control-plaintext"
+                                                                id="staticEmail"
+                                                                value=": Rp. <?= number_format($datProdi['spp'], '2', ',','.');?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="staticEmail"
+                                                            class="col-sm-4 col-form-label  text-left">Profile
+                                                            Kelulusan</label>
                                                         <div class="col-sm-8">
                                                             <textarea readonly
                                                                 class="form-control-plaintext">: <?= $datProdi['kelebihan'];?></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="staticEmail"
+                                                            class="col-sm-4 col-form-label  text-left">Visi</label>
+                                                        <div class="col-sm-8">
+                                                            <textarea readonly
+                                                                class="form-control-plaintext">: <?= $datProdi['visi'];?></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="staticEmail"
+                                                            class="col-sm-4 col-form-label  text-left">Misi</label>
+                                                        <div class="col-sm-8">
+                                                            <textarea readonly
+                                                                class="form-control-plaintext">: <?= $datProdi['misi'];?></textarea>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -195,8 +256,8 @@ include 'header.php';
                                         </div>
                                     </div>
                                 </div>
-                                <div class="modal fade" id="<?= $x['kd_pts'].$x['kd_prodi']?>" tabindex="-1" role="dialog"
-                                    aria-labelledby="modelTitleId" aria-hidden="true">
+                                <div class="modal fade" id="<?= $x['kd_pts'].$x['kd_prodi']?>" tabindex="-1"
+                                    role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
                                     <div class="modal-dialog modal-lg" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -270,9 +331,9 @@ include 'header.php';
                                                         <label for="staticEmail"
                                                             class="col-sm-4 col-form-label  text-left">Fasilitas</label>
                                                         <div class="col-sm-8">
-                                                            <input type="text" readonly class="form-control-plaintext"
-                                                                id="staticEmail"
-                                                                value=": <?= $dat['fasilitas_kampus'];?>">
+                                                            <textarea name="" readonly class="form-control-plaintext"
+                                                                id="staticEmail" rows="4"
+                                                                value=": <?= $dat['fasilitas_kampus'];?>">: <?= $dat['fasilitas_kampus'];?></textarea>
                                                         </div>
                                                     </div>
                                                 </form>

@@ -51,11 +51,17 @@ if (isset($_POST['proses2'])) {
     $nama_prodi = $_POST['nama_prodi'];
     $akreditasi = $_POST['akreditasi'];
     $kelebihan = $_POST['kelebihan'];
+    $visi = $_POST['visi'];
+    $misi = $_POST['misi'];
     $kd_prodi = $_POST['kd_prodi'];
+    $spp = $_POST['spp'];
 
     $sql = mysqli_query($conn, "UPDATE prodi SET
 			nama_prodi = '$nama_prodi',
 			akreditasi = '$akreditasi',
+			visi = '$visi',
+			misi = '$misi',
+			spp = '$spp',
 			kelebihan = '$kelebihan' WHERE kd_prodi = '$kd_prodi' ");
 
     if ($sql) {

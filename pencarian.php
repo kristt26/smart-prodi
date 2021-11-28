@@ -43,6 +43,7 @@ include 'header.php';
                       <th>Nilai Akhir</th> -->
                                 <th>Kode PTS</th>
                                 <th>Nama Universitas</th>
+                                <th>Ranking</th>
                                 <th>Keunggulan</th>
                                 <th>Rekomendasi</th>
                             </tr>
@@ -105,9 +106,13 @@ $uu = mysqli_fetch_array($rr);
 $kode = $uu['kd_prodi'];
 
 // $sql = mysqli_query($conn, "SELECT * FROM kriteria AS kr INNER JOIN alternatif_kriteria AS ak ON kr.kd_pts = ak.kd_pts where kd_prodi = '$kode' ");
-
+if($kd_prodi == ""){
+$sql = mysqli_query($conn, "SELECT `alternatif_kriteria`.*,
+                `prodi`.`kelebihan` FROM `alternatif_kriteria` LEFT JOIN `prodi` ON `prodi`.`kd_prodi` = `alternatif_kriteria`.`kd_prodi` where sub_a_kampus = '$nilai1' AND sub_a_prodi = '$nilai2'  AND sub_asal_jurusan = '$nilai3' AND sub_spp = '$nilai4' ");
+}else {
 $sql = mysqli_query($conn, "SELECT `alternatif_kriteria`.*,
                 `prodi`.`kelebihan` FROM `alternatif_kriteria` LEFT JOIN `prodi` ON `prodi`.`kd_prodi` = `alternatif_kriteria`.`kd_prodi` where prodi.nama_prodi='$kd_prodi' AND  sub_a_kampus = '$nilai1' AND sub_a_prodi = '$nilai2'  AND sub_asal_jurusan = '$nilai3' AND sub_spp = '$nilai4' ");
+}
 
 $sql1 = mysqli_query($conn, "SELECT MAX(sub_a_kampus) AS kode FROM alternatif_kriteria ");
 $sql2 = mysqli_query($conn, "SELECT MAX(sub_a_prodi) AS kode FROM alternatif_kriteria ");
@@ -188,6 +193,7 @@ while ($data = mysqli_fetch_array($sql)) {
 
                                 <td>
                                     <?php
+                                    
 $kode = $data['kd_pts'];
         $dt = mysqli_query($conn, "SELECT * FROM pts where kd_pts = '$kode' ");
         $dat = mysqli_fetch_array($dt);
@@ -316,6 +322,7 @@ $kode = $data['kd_pts'];
                                         </div>
                                     </div>
                                 </td>
+                                <td><?php echo $no; ?></td>
                                 <td><?php echo $data['kelebihan']; ?></td>
 
                                 <td class="text-center">

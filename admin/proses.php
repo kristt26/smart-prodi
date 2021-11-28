@@ -110,9 +110,12 @@ if (isset($_POST['proses2'])) {
     $nama_prodi = $_POST['nama_prodi'];
     $akreditasi = $_POST['akreditasi'];
     $kelebihan = $_POST['kelebihan'];
+    $visi = $_POST['visi'];
+    $misi = $_POST['misi'];
     $kd_pts = $_POST['kd_pts'];
+    $spp = $_POST['spp'];
 
-    $sql = mysqli_query($conn, "INSERT INTO prodi VALUES ('$id','$kd_pts','$nama_prodi','$akreditasi','$kelebihan' )");
+    $sql = mysqli_query($conn, "INSERT INTO prodi VALUES ('$id','$kd_pts','$nama_prodi','$akreditasi','$kelebihan', '$visi', '$misi', 'spp' )");
 
     if ($sql) {
         echo "

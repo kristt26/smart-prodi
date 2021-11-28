@@ -27,14 +27,14 @@ include 'header.php';
                     <div class="card text-white bg-secondary o-hidden h-100">
                         <div class="card-body">
                             <div class="card-header">
-                                CARI PROGRAM STUDI
+                                KONSULTASI
                             </div>
 
                             <hr>
                             <form action="pencarian.php" method="POST">
                                 <div class="form-group row">
                                     <label class="col-md-4"><b>Prodi Pilihan</b></label>
-                                    <select name='prodi' class='form-control col-md-8' required>
+                                    <select name='prodi' class='form-control col-md-8'>
                                         <option value="">~ Pilih Program Studi ~</option>
 
                                         <?php
@@ -52,7 +52,7 @@ while ($prodi = mysqli_fetch_array($sql)) {?>
                                 </div>
                                 <hr>
                                 <div class="form-group row">
-                                    <label class="col-md-4"><b>Asal Jurusan SMA/SMK</b></label>
+                                    <label class="col-md-4"><b>Asal Jurusan di SMA/SMK</b></label>
                                     <select name='asal_jurusan' class='form-control col-md-8' required>
                                         <option value="">~ Pilih Sub Kriteria ~</option>
 
@@ -116,7 +116,7 @@ while ($r = mysqli_fetch_array($sql)) {?>
 
 
                                 <div class="form-group row">
-                                    <label class="col-md-4"><b>SPP</b></label>
+                                    <label class="col-md-4"><b>SPP Per Semester</b></label>
                                     <select name='spp' class='form-control col-md-8' required>
                                         <option value="">~ Pilih Sub Kriteria ~</option>
                                         <option value="2000000 - 3000000">Rp. 2.000.000 - Rp. 3.000.000</option>
@@ -141,7 +141,7 @@ while ($r = mysqli_fetch_array($sql)) {?>
 
 
                                 <div class="form-group row">
-                                    <label class="col-md-4"><b>FASILITAS</b></label>
+                                    <label class="col-md-4"><b>Fasilitas Kampus</b></label>
                                     <select name='fasilitas' class='form-control col-md-8' required>
                                         <option value="">~ Pilih Sub Kriteria ~</option>
 

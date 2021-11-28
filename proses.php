@@ -71,9 +71,9 @@ if ($sql) {
                             <tr>
                                 <th>Kode Prodi</th>
                                 <th>Nama Prodi</th>
-                                <th>Akreditas Kampus</th>
-                                <th>Akreditas Prodi</th>
                                 <th>Asal Jurusan SLTA</th>
+                                <th>Akreditas Prodi</th>
+                                <th>Akreditas Kampus</th>
                                 <th>SPP</th>
                                 <th>Fasilitas</th>
                                 <th>Nilai Akhir</th>
@@ -85,16 +85,16 @@ if ($sql) {
 
                             <td><?php echo $kd_prodi ?></td>
                             <td><?php echo $nama_prodi ?></td>
-                            <td><?php echo $subkriteria1 ?></td>
-                            <td><?php echo $subkriteria2 ?></td>
                             <td><?php echo $subkriteria3 ?></td>
+                            <td><?php echo $subkriteria2 ?></td>
+                            <td><?php echo $subkriteria1 ?></td>
                             <td><?php echo $subkriteria4 ?></td>
                             <td><?php echo $subkriteria5 ?></td>
 
                             <?php if ($hasil > 0.5) {?>
                             <td class="bg-success"><?php echo $hasil ?></td>
                             <?php } else {?>
-                            <td><?php echo $hasil ?></td>
+                            <td><?php echo number_format($hasil,3,'.','') ?></td>
                             <?php }?>
 
                             <td><?php echo $dat['nama_pts'] ?></td>

@@ -24,6 +24,7 @@ body {
   width: 100%;
   padding-top: 1rem;
   padding-bottom: 80px;
+  background-color: #17a2b8;
 }
 
 body.fixed-nav #content-wrapper {
@@ -372,4 +373,11 @@ body.sidebar-toggled footer.sticky-footer {
   body.sidebar-toggled footer.sticky-footer {
     width: calc(100% - 90px);
   }
+}
+
+.card-body {
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  padding: 1.25rem;
+  background-color: #17a2b8;
 }
