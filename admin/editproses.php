@@ -49,6 +49,7 @@ if (isset($_POST['proses1'])) {
 if (isset($_POST['proses2'])) {
 
     $nama_prodi = $_POST['nama_prodi'];
+    $jenjang = $_POST['jenjang'];
     $akreditasi = $_POST['akreditasi'];
     $kelebihan = $_POST['kelebihan'];
     $visi = $_POST['visi'];
@@ -62,7 +63,9 @@ if (isset($_POST['proses2'])) {
 			visi = '$visi',
 			misi = '$misi',
 			spp = '$spp',
-			kelebihan = '$kelebihan' WHERE kd_prodi = '$kd_prodi' ");
+			kelebihan = '$kelebihan', 
+			jenjang = '$jenjang'
+			WHERE kd_prodi = '$kd_prodi' ");
 
     if ($sql) {
         echo "

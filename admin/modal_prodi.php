@@ -44,6 +44,11 @@ Title : Crud Menggunakan Modal Bootsrap
                 </div>
                 <hr>
                 <div class="form-group row">
+                    <label class="col-md-4"><b>Jenjang</b></label>
+                    <input type="text" class="form-control col-md-8" name="jenjang"
+                        value="<?php echo $r['jenjang']; ?>">
+                </div>
+                <div class="form-group row">
                     <label class="col-md-4"><b>SPP</b></label>
                     <input type="text" class="form-control col-md-8" name="spp" value="<?php echo $r['spp']; ?>">
                 </div>

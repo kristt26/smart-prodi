@@ -344,7 +344,7 @@ $kode = $data['kd_pts'];
                                     </div>
                                 </td>
                                 <td class="bg-success'">
-                                    <?php echo $data['hasil_akhir'] ?>
+                                    <?php echo number_format($data['hasil_akhir'], 3,'.',',') ?>
                                 </td>
                                 <td><?php echo $data['kelebihan']; ?></td>
 

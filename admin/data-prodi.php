@@ -44,9 +44,12 @@ include 'sidebar.php';
                                     <th>No.</th>
                                     <th>KODE</th>
                                     <th>Nama Prodi</th>
+                                    <th>Jenjang</th>
                                     <th>Akreditasi</th>
+                                    <th>Visi</th>
+                                    <th>Misi</th>
                                     <th>Keunggulan</th>
-                                    <th>Kode PTS</th>
+                                    <th>PTS</th>
                                     <th>AKSI</th>
                                 </tr>
                             </thead>
@@ -67,8 +70,11 @@ while ($data = mysqli_fetch_array($sql)) {
                                     <td><?php echo $no; ?></td>
                                     <td><?php echo $data['kd_prodi']; ?></td>
                                     <td><?php echo $data['nama_prodi']; ?></td>
+                                    <td><?php echo $data['jenjang']; ?></td>
                                     <td><?php echo $data['akreditasi']; ?></td>
                                     <td><?php echo $data['kelebihan']; ?></td>
+                                    <td><?php echo $data['visi']; ?></td>
+                                    <td><?php echo $data['misi']; ?></td>
                                     <td><?php echo $data['nama_pts']; ?></td>
                                     <td class="text-center">
                                         <a href="hapus.php?hapus1=<?php echo $data['0']; ?> "
@@ -169,24 +175,23 @@ while ($data = mysqli_fetch_array($sql)) {
 
 <!-- Javascript untuk popup modal Edit-->
 <script type="text/javascript">
-$(document).ready(function() {
-    $(".open_modal").click(function(e) {
-        var m = $(this).attr("id");
-        $.ajax({
-            url: "modal_prodi.php",
-            type: "GET",
-            data: {
-                modal_id: m,
-            },
-            success: function(ajaxData) {
-                $("#ModalEdit").html(ajaxData);
-                $("#ModalEdit").modal('show', {
-                    backdrop: 'true'
-                });
-            }
-        });
+$(".open_modal").click(function(e) {
+    var m = $(this).attr("id");
+    $.ajax({
+        url: "modal_prodi.php",
+        type: "GET",
+        data: {
+            modal_id: m,
+        },
+        success: function(ajaxData) {
+            $("#ModalEdit").html(ajaxData);
+            $("#ModalEdit").modal('show', {
+                backdrop: 'true'
+            });
+        }
     });
 });
+// $(document).ready(function() {});
 </script>
 
 

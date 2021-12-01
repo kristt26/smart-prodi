@@ -173,7 +173,7 @@ include 'header.php';
                                 <div class="modal fade" id="<?= $x['kd_prodi']?>" tabindex="-1" role="dialog"
                                     aria-labelledby="modelTitleId" aria-hidden="true">
                                     <div class="modal-dialog modal-lg" role="document">
-                                        <div class="modal-content">
+                                        <div class="modal-content bg-warning">
                                             <div class="modal-header">
                                                 <h5 class="modal-title">Detail Prodi</h5>
                                                 <button type="button" class="close" data-dismiss="modal"
@@ -189,11 +189,15 @@ include 'header.php';
                                                             <td><?= $datProdi['nama_prodi'];?></td>
                                                         </tr>
                                                         <tr>
+                                                            <td width="30%">Jenjang</td>
+                                                            <td><?= $datProdi['jenjang'];?></td>
+                                                        </tr>
+                                                        <tr>
                                                             <td width="30%">Akreditasi</td>
                                                             <td><?= $datProdi['akreditasi'];?></td>
                                                         </tr>
                                                         <tr>
-                                                            <td width="30%">Asal di SMA/SMK</td>
+                                                            <td width="30%">Syarat Masuk</td>
                                                             <td><?= $semua == 10 ? 'Semua Jurusan' : 'IPA, IPS, Bahasa'?>
                                                             </td>
                                                         </tr>
@@ -227,7 +231,7 @@ include 'header.php';
                                 <div class="modal fade" id="<?= $x['kd_pts'].$x['kd_prodi']?>" tabindex="-1"
                                     role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
                                     <div class="modal-dialog modal-lg" role="document">
-                                        <div class="modal-content">
+                                        <div class="modal-content bg-warning">
                                             <div class="modal-header">
                                                 <h5 class="modal-title">Detail PTS</h5>
                                                 <button type="button" class="close" data-dismiss="modal"
