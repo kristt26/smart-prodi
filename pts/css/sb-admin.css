@@ -381,3 +381,7 @@ body.sidebar-toggled footer.sticky-footer {
   padding: 1.25rem;
   background-color: #17a2b8;
 }
+
+a{
+  color: #000;
+}
