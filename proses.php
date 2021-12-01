@@ -78,7 +78,6 @@ if ($sql) {
                                 <th>Fasilitas</th>
                                 <th>Nilai Akhir</th>
                                 <th>Nama Universitas</th>
-                                <th>Detail</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -98,11 +97,10 @@ if ($sql) {
                             <?php }?>
 
                             <td><?php echo $dat['nama_pts'] ?></td>
-                            <td>
+                            <!-- <td>
                                 <?php
 
     ?>
-                                <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
                                     data-target="#testing">Detail</button>
 
@@ -195,7 +193,7 @@ if ($sql) {
                                         </div>
                                     </div>
                                 </div>
-                            </td>
+                            </td> -->
                         </tbody>
                     </table>
 

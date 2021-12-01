@@ -32,7 +32,7 @@ include 'header.php';
                     <table class="text-center table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>No.</th>
+                                <th>Rangking.</th>
                                 <th>Kode Prodi</th>
                                 <th>Program Studi</th>
                                 <!-- <th>Akreditas Kampus</th>
@@ -43,7 +43,7 @@ include 'header.php';
                       <th>Nilai Akhir</th> -->
                                 <th>Kode PTS</th>
                                 <th>Nama Universitas</th>
-                                <th>Ranking</th>
+                                <th>Nilai Akhir</th>
                                 <th>Keunggulan</th>
                                 <th>Rekomendasi</th>
                             </tr>
@@ -108,11 +108,18 @@ $kode = $uu['kd_prodi'];
 // $sql = mysqli_query($conn, "SELECT * FROM kriteria AS kr INNER JOIN alternatif_kriteria AS ak ON kr.kd_pts = ak.kd_pts where kd_prodi = '$kode' ");
 if($kd_prodi == ""){
 $sql = mysqli_query($conn, "SELECT `alternatif_kriteria`.*,
-                `prodi`.`kelebihan` FROM `alternatif_kriteria` LEFT JOIN `prodi` ON `prodi`.`kd_prodi` = `alternatif_kriteria`.`kd_prodi` where sub_a_kampus = '$nilai1' AND sub_a_prodi = '$nilai2'  AND sub_asal_jurusan = '$nilai3' AND sub_spp = '$nilai4' ");
+                `prodi`.`kelebihan` FROM `alternatif_kriteria` LEFT JOIN `prodi` ON `prodi`.`kd_prodi` = `alternatif_kriteria`.`kd_prodi` where sub_a_kampus = '$nilai1' OR sub_a_prodi = '$nilai2'  OR sub_asal_jurusan = '$nilai3' OR sub_spp = '$nilai4' ");
 }else {
 $sql = mysqli_query($conn, "SELECT `alternatif_kriteria`.*,
-                `prodi`.`kelebihan` FROM `alternatif_kriteria` LEFT JOIN `prodi` ON `prodi`.`kd_prodi` = `alternatif_kriteria`.`kd_prodi` where prodi.nama_prodi='$kd_prodi' AND  sub_a_kampus = '$nilai1' AND sub_a_prodi = '$nilai2'  AND sub_asal_jurusan = '$nilai3' AND sub_spp = '$nilai4' ");
+                `prodi`.`kelebihan` FROM `alternatif_kriteria` LEFT JOIN `prodi` ON `prodi`.`kd_prodi` = `alternatif_kriteria`.`kd_prodi` where prodi.nama_prodi='$kd_prodi' AND  (sub_a_kampus = '$nilai1' OR sub_a_prodi = '$nilai2'  OR sub_asal_jurusan = '$nilai3' OR sub_spp = '$nilai4') ");
 }
+$data = $sql->fetch_all(MYSQLI_ASSOC);
+
+$normalKampus = $data[0]['a_kampus']/$data[0]['nilai_akhir'];
+$normalProdi = $data[0]['a_prodi']/$data[0]['nilai_akhir'];
+$normalAsalJurusan = $data[0]['asal_jurusan']/$data[0]['nilai_akhir'];
+$normalSpp = $data[0]['spp']/$data[0]['nilai_akhir'];
+$normalFasilitas = $data[0]['fasilitas']/$data[0]['nilai_akhir'];
 
 $sql1 = mysqli_query($conn, "SELECT MAX(sub_a_kampus) AS kode FROM alternatif_kriteria ");
 $sql2 = mysqli_query($conn, "SELECT MAX(sub_a_prodi) AS kode FROM alternatif_kriteria ");
@@ -144,11 +151,13 @@ $dd3 = mysqli_fetch_array($lqs3);
 $dd4 = mysqli_fetch_array($lqs4);
 $dd5 = mysqli_fetch_array($lqs5);
 
+
 $b1 = $dd1['kode'];
 $b2 = $dd2['kode'];
 $b3 = $dd3['kode'];
 $b4 = $dd4['kode'];
 $b5 = $dd5['kode'];
+
 
 $ab1 = $a1 - $b1;
 $ab2 = $a2 - $b2;
@@ -156,7 +165,19 @@ $ab3 = $a3 - $b3;
 $ab4 = $a4 - $b4;
 $ab5 = $a5 - $b5;
 $set = [];
-while ($data = mysqli_fetch_array($sql)) {
+
+$nilaiAkhir=[];
+foreach ($data as $key => $value) {
+    $value['sub_a_kampus'] = (($value['sub_a_kampus']-$b1)/($ab1))*$normalKampus;
+    $value['sub_a_prodi'] = (($value['sub_a_prodi']-$b2)/($ab2))*$normalProdi;
+    $value['sub_asal_jurusan'] = (($value['sub_asal_jurusan']-$b3)/($ab3))*$normalAsalJurusan;
+    $value['sub_spp'] = (($value['sub_spp']-$b4)/($ab4))*$normalSpp;
+    $value['sub_fasilitas'] = (($value['sub_fasilitas']-$b5)/($ab5))*$normalFasilitas;
+    $value['hasil_akhir'] = $value['sub_a_kampus'] + $value['sub_a_prodi'] + $value['sub_asal_jurusan'] +$value['sub_spp'] + $value['sub_fasilitas'];
+    array_push($nilaiAkhir, $value);
+}
+usort($nilaiAkhir, function($a, $b) {return strcmp($b['hasil_akhir'], $a['hasil_akhir']);});
+foreach ($nilaiAkhir as $key => $data) {
     $setValue = false;
     foreach ($set as $key => $value) {
         if ($data['kd_pts'] == $value['kd_pts']) {
@@ -322,7 +343,9 @@ $kode = $data['kd_pts'];
                                         </div>
                                     </div>
                                 </td>
-                                <td><?php echo $no; ?></td>
+                                <td class="bg-success'">
+                                    <?php echo $data['hasil_akhir'] ?>
+                                </td>
                                 <td><?php echo $data['kelebihan']; ?></td>
 
                                 <td class="text-center">
@@ -330,23 +353,18 @@ $kode = $data['kd_pts'];
 
                                     <form action="proses.php" method="POST">
 
-                                        <input type="hidden" name="a_kampus"
-                                            value="<?php echo $data['a_kampus'] / 126 * ($data['sub_a_kampus'] - $b1) / $ab1; ?>">
-                                        <input type="hidden" name="a_prodi"
-                                            value="<?php echo $data['a_prodi'] / 126 * ($data['sub_a_prodi'] - $b2) / $ab2; ?>">
+                                        <input type="hidden" name="a_kampus" value="<?php echo $data['a_kampus']?>">
+                                        <input type="hidden" name="a_prodi" value="<?php echo $data['a_prodi']?>">
                                         <input type="hidden" name="asal_jurusan"
-                                            value="<?php echo $data['asal_jurusan'] / 126 * ($data['sub_asal_jurusan'] - $b3) / $ab3; ?>">
-                                        <input type="hidden" name="spp"
-                                            value="<?php echo $data['spp'] / 126 * ($data['sub_spp'] - $b4) / $ab4; ?>">
-                                        <input type="hidden" name="fasilitas"
-                                            value="<?php echo $data['fasilitas'] / 126 * ($data['sub_fasilitas'] - $b5) / $ab5; ?>">
+                                            value="<?php echo $data['asal_jurusan']?>">
+                                        <input type="hidden" name="spp" value="<?php echo $data['spp']?>">
+                                        <input type="hidden" name="fasilitas" value="<?php echo $data['fasilitas']?>">
                                         <input type="hidden" name="nama_prodi"
                                             value="<?php echo $data['nama_prodi']; ?>">
                                         <input type="hidden" name="kd_prodi" value="<?php echo $data['kd_prodi']; ?>">
                                         <input type="hidden" name="kd_pts" value="<?php echo $data['kd_pts']; ?>">
 
-                                        <input type="hidden" name="hasil"
-                                            value="<?php echo ($data['a_kampus'] / 126 * ($data['sub_a_kampus'] - $b1) / $ab1) + ($data['a_prodi'] / 126 * ($data['sub_a_prodi'] - $b2) / $ab2) + ($data['asal_jurusan'] / 126 * ($data['sub_asal_jurusan'] - $b3) / $ab3) + ($data['spp'] / 126 * ($data['sub_spp'] - $b4) / $ab4) + ($data['fasilitas'] / 126 * ($data['sub_fasilitas'] - $b5) / $ab5) ?>">
+                                        <input type="hidden" name="hasil" value="<?php echo $data['hasil_akhir'];?>">
 
                                         <button class="btn btn-success btn-block" type="submit"
                                             formtarget="_blank">Hasil

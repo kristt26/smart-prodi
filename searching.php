@@ -183,75 +183,43 @@ include 'header.php';
                                             </div>
                                             <div class="modal-body">
                                                 <form>
-                                                    <div class="form-group row">
-                                                        <label for="staticEmail"
-                                                            class="col-sm-4 col-form-label  text-left">Nama
-                                                            Prodi</label>
-                                                        <div class="col-sm-8">
-                                                            <textarea readonly
-                                                                class="form-control-plaintext">: <?= $datProdi['nama_prodi'];?></textarea>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="staticEmail"
-                                                            class="col-sm-4 col-form-label  text-left">Akreditasi</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" readonly class="form-control-plaintext"
-                                                                id="staticEmail"
-                                                                value=": <?= $datProdi['akreditasi'];?>">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="staticEmail"
-                                                            class="col-sm-4 col-form-label  text-left">Asal di SMA/SMK
-                                                        </label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" readonly class="form-control-plaintext"
-                                                                id="staticEmail"
-                                                                value=": <?= $semua == 10 ? 'Semua Jurusan' : 'IPA, IPS, Bahasa' ?>">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="staticEmail"
-                                                            class="col-sm-4 col-form-label  text-left">SPP Per Semester
-                                                        </label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" readonly class="form-control-plaintext"
-                                                                id="staticEmail"
-                                                                value=": Rp. <?= number_format($datProdi['spp'], '2', ',','.');?>">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="staticEmail"
-                                                            class="col-sm-4 col-form-label  text-left">Profile
-                                                            Kelulusan</label>
-                                                        <div class="col-sm-8">
-                                                            <textarea readonly
-                                                                class="form-control-plaintext">: <?= $datProdi['kelebihan'];?></textarea>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="staticEmail"
-                                                            class="col-sm-4 col-form-label  text-left">Visi</label>
-                                                        <div class="col-sm-8">
-                                                            <textarea readonly
-                                                                class="form-control-plaintext">: <?= $datProdi['visi'];?></textarea>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="staticEmail"
-                                                            class="col-sm-4 col-form-label  text-left">Misi</label>
-                                                        <div class="col-sm-8">
-                                                            <textarea readonly
-                                                                class="form-control-plaintext">: <?= $datProdi['misi'];?></textarea>
-                                                        </div>
-                                                    </div>
+                                                    <table class="table table-bordered">
+                                                        <tr>
+                                                            <td width="30%">Nama Prodi</td>
+                                                            <td><?= $datProdi['nama_prodi'];?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="30%">Akreditasi</td>
+                                                            <td><?= $datProdi['akreditasi'];?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="30%">Asal di SMA/SMK</td>
+                                                            <td><?= $semua == 10 ? 'Semua Jurusan' : 'IPA, IPS, Bahasa'?>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="30%">SPP Per Semester</td>
+                                                            <td>Rp. <?= number_format($datProdi['spp'], '2', ',','.');?>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="30%">Visi</td>
+                                                            <td><?= $datProdi['visi'];?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="30%">Misi</td>
+                                                            <td><?= $datProdi['misi'];?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="30%">Profile Kelulusan</td>
+                                                            <td><?= $datProdi['kelebihan'];?></td>
+                                                        </tr>
+                                                    </table>
                                                 </form>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                     data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Save</button>
                                             </div>
                                         </div>
                                     </div>
@@ -269,79 +237,45 @@ include 'header.php';
                                             </div>
                                             <div class="modal-body">
                                                 <form>
-                                                    <div class="form-group row">
-                                                        <label for="staticEmail"
-                                                            class="col-sm-4 col-form-label  text-left">Nama
-                                                            Universitas</label>
-                                                        <div class="col-sm-8">
-                                                            <textarea readonly
-                                                                class="form-control-plaintext">: <?= $dat['nama_pts'];?></textarea>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="staticEmail"
-                                                            class="col-sm-4 col-form-label  text-left">Akreditasi</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" readonly class="form-control-plaintext"
-                                                                id="staticEmail" value=": <?= $dat['akreditasi'];?>">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="staticEmail"
-                                                            class="col-sm-4 col-form-label  text-left">Alamat</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" readonly class="form-control-plaintext"
-                                                                id="staticEmail" value=": <?= $dat['alamat'];?>">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="staticEmail"
-                                                            class="col-sm-4 col-form-label  text-left">Kode
-                                                            Pos</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" readonly class="form-control-plaintext"
-                                                                id="staticEmail" value=": <?= $dat['kode_pos'];?>">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="staticEmail"
-                                                            class="col-sm-4 col-form-label  text-left">Telepon</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" readonly class="form-control-plaintext"
-                                                                id="staticEmail" value=": <?= $dat['no_telepon'];?>">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="staticEmail"
-                                                            class="col-sm-4 col-form-label  text-left">Email</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" readonly class="form-control-plaintext"
-                                                                id="staticEmail" value=": <?= $dat['email'];?>">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="staticEmail"
-                                                            class="col-sm-4 col-form-label  text-left">Website</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" readonly class="form-control-plaintext"
-                                                                id="staticEmail" value=": <?= $dat['laman_web'];?>">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="staticEmail"
-                                                            class="col-sm-4 col-form-label  text-left">Fasilitas</label>
-                                                        <div class="col-sm-8">
-                                                            <textarea name="" readonly class="form-control-plaintext"
-                                                                id="staticEmail" rows="4"
-                                                                value=": <?= $dat['fasilitas_kampus'];?>">: <?= $dat['fasilitas_kampus'];?></textarea>
-                                                        </div>
-                                                    </div>
+                                                    <table class="table table-bordered">
+                                                        <tr>
+                                                            <td width="30%">Nama Universitas</td>
+                                                            <td><?= $dat['nama_pts'];?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Akreditasi</td>
+                                                            <td><?= $dat['akreditasi'];?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Alamat</td>
+                                                            <td><?= $dat['alamat'];?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Kode Pos</td>
+                                                            <td><?= $dat['kode_pos'];?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Telepon</td>
+                                                            <td><?= $dat['no_telepon'];?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Email</td>
+                                                            <td><?= $dat['email'];?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Website</td>
+                                                            <td><?= $dat['laman_web'];?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Fasilitas</td>
+                                                            <td><?= $dat['fasilitas_kampus'];?></td>
+                                                        </tr>
+                                                    </table>
                                                 </form>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                     data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Save</button>
                                             </div>
                                         </div>
                                     </div>
