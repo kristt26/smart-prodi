@@ -353,12 +353,13 @@ $kode = $data['kd_pts'];
 
                                     <form action="proses.php" method="POST">
 
-                                        <input type="hidden" name="a_kampus" value="<?php echo $data['a_kampus']?>">
-                                        <input type="hidden" name="a_prodi" value="<?php echo $data['a_prodi']?>">
+                                        <input type="hidden" name="a_kampus" value="<?php echo $data['sub_a_kampus']?>">
+                                        <input type="hidden" name="a_prodi" value="<?php echo $data['sub_a_prodi']?>">
                                         <input type="hidden" name="asal_jurusan"
-                                            value="<?php echo $data['asal_jurusan']?>">
-                                        <input type="hidden" name="spp" value="<?php echo $data['spp']?>">
-                                        <input type="hidden" name="fasilitas" value="<?php echo $data['fasilitas']?>">
+                                            value="<?php echo $data['sub_asal_jurusan']?>">
+                                        <input type="hidden" name="spp" value="<?php echo $data['sub_spp']?>">
+                                        <input type="hidden" name="fasilitas"
+                                            value="<?php echo $data['sub_fasilitas']?>">
                                         <input type="hidden" name="nama_prodi"
                                             value="<?php echo $data['nama_prodi']; ?>">
                                         <input type="hidden" name="kd_prodi" value="<?php echo $data['kd_prodi']; ?>">
