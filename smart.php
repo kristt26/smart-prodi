@@ -4,11 +4,8 @@ include 'header.php';
 
 ?>
 
-<div id="wrapper">
-
-
-    <div id="content-wrapper">
-
+<section id="portfolio" class="portfolio-area">
+    <div class="container">
         <div class="container">
 
             <!-- Breadcrumbs-->
@@ -128,11 +125,11 @@ include 'koneksi.php';
 $sql = mysqli_query($conn, "SELECT * FROM kriteria AS kr INNER JOIN subkriteria AS sk ON kr.kd_kriteria = sk.kd_kriteria  where kr.nama_kriteria like '%spp%' ORDER BY sk.nama_sub");
 while ($r = mysqli_fetch_array($sql)) {?>
 
-                                        <option
-                                            value="<?php echo $r['bobot']; ?>,<?php echo $r['nilai']; ?>,<?php echo $r['nama_sub'] ?>">
-                                            <?php echo $r['nama_sub']; ?></option>
+                        <option
+                            value="<?php echo $r['bobot']; ?>,<?php echo $r['nilai']; ?>,<?php echo $r['nama_sub'] ?>">
+                            <?php echo $r['nama_sub']; ?></option>
 
-                                        <?php }?> -->
+                        <?php }?> -->
                                     </select>
                                 </div>
                                 <hr>
@@ -178,27 +175,27 @@ while ($r = mysqli_fetch_array($sql)) {?>
 
             <!-- DataTables Example -->
             <!-- <div class="card mb-3" id="prodi">
-                <div class="card-header">
-                    <i class="fas fa-table"> </i>
-                    DATA PROGRAM STUDI
-                </div>
-                <div class="card-body">
+<div class="card-header">
+    <i class="fas fa-table"> </i>
+    DATA PROGRAM STUDI
+</div>
+<div class="card-body">
 
 
-                    <div class="table-responsive">
+    <div class="table-responsive">
 
-                        <table class="text-center table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th>No.</th>
-                                    <th>Nama Prodi</th>
-                                    <th>AKSI</th>
-                                </tr>
-                            </thead>
+        <table class="text-center table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Nama Prodi</th>
+                    <th>AKSI</th>
+                </tr>
+            </thead>
 
-                            <tbody>
+            <tbody>
 
-                                <?php
+                <?php
 include 'koneksi.php';
 
 $no = 1;
@@ -206,122 +203,132 @@ $no = 1;
 $sql = mysqli_query($conn, "SELECT DISTINCT nama_prodi FROM prodi ");
 while ($data = mysqli_fetch_array($sql)) {
 
-    ?>
+?>
 
-                                <tr>
-                                    <td><?php echo $no; ?></td>
-                                    <td><?php echo $data['nama_prodi']; ?></td>
-                                    <td class="text-center">
-                                        <form action="detail_pencarian.php" method="post">
-                                            <input type="hidden" name="nama_prodi"
-                                                value="<?php echo $data['nama_prodi']; ?>">
-                                            <button class="btn btn-sm btn-primary" type="submit" name="detail">
-                                                Kriteria Pencarian
-                                            </button>
-                                        </form>
-                                    </td>
+                <tr>
+                    <td><?php echo $no; ?></td>
+                    <td><?php echo $data['nama_prodi']; ?></td>
+                    <td class="text-center">
+                        <form action="detail_pencarian.php" method="post">
+                            <input type="hidden" name="nama_prodi"
+                                value="<?php echo $data['nama_prodi']; ?>">
+                            <button class="btn btn-sm btn-primary" type="submit" name="detail">
+                                Kriteria Pencarian
+                            </button>
+                        </form>
+                    </td>
 
-                                </tr>
-                                <?php $no++;}?>
-                            </tbody>
+                </tr>
+                <?php $no++;}?>
+            </tbody>
 
-                        </table>
+        </table>
 
-                    </div>
+    </div>
 
 
-                </div>
+</div>
 
-            </div> -->
+</div> -->
             <!-- /.container-fluid -->
 
         </div>
-
     </div>
-    <!-- /.content-wrapper -->
+    </div>
 
-</div>
-<!-- /#wrapper -->
 
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-</a>
 
-<!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="logout.php">Logout</a>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="logout.php">Logout</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
 
 
 
-<!-- Modal Popup untuk Edit-->
-<div id="ModalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <!-- Modal Popup untuk Edit-->
+    <div id="ModalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
 
-</div>
+    </div>
 
 
 
-<!-- Bootstrap core JavaScript-->
-<script src="pts/vendor/jquery/jquery.min.js"></script>
-<script src="pts/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-<!-- Core plugin JavaScript-->
-<script src="pts/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!--====== jquery js ======-->
+    <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
 
-<!-- Page level plugin JavaScript-->
-<script src="pts/vendor/chart.js/Chart.min.js"></script>
-<script src="pts/vendor/datatables/jquery.dataTables.js"></script>
-<script src="pts/vendor/datatables/dataTables.bootstrap4.js"></script>
+    <!--====== Bootstrap js ======-->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
 
-<!-- Custom scripts for all pages-->
-<script src="pts/js/sb-admin.min.js"></script>
+    <!--====== Slick js ======-->
+    <script src="assets/js/slick.min.js"></script>
 
-<!-- Demo scripts for this page-->
-<script src="pts/js/demo/datatables-demo.js"></script>
-<script src="pts/js/demo/chart-area-demo.js"></script>
+    <!--====== Isotope js ======-->
+    <script src="assets/js/isotope.pkgd.min.js"></script>
 
-<!-- Javascript untuk popup modal Edit-->
-<script type="text/javascript">
-$(document).ready(function() {
-    $(".open_modal").click(function(e) {
-        var m = $(this).attr("id");
-        $.ajax({
-            url: "modal_edit.php",
-            type: "GET",
-            data: {
-                modal_id: m,
-            },
-            success: function(ajaxData) {
-                $("#ModalEdit").html(ajaxData);
-                $("#ModalEdit").modal('show', {
-                    backdrop: 'true'
-                });
-            }
+    <!--====== Images Loaded js ======-->
+    <script src="assets/js/imagesloaded.pkgd.min.js"></script>
+
+    <!--====== Magnific Popup js ======-->
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+
+    <!--====== Scrolling js ======-->
+    <script src="assets/js/scrolling-nav.js"></script>
+    <script src="assets/js/jquery.easing.min.js"></script>
+
+    <!--====== wow js ======-->
+    <script src="assets/js/wow.min.js"></script>
+
+    <!--====== Main js ======-->
+    <script src="assets/js/main.js"></script>
+    <!-- Javascript untuk popup modal Edit-->
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $(".open_modal").click(function(e) {
+            var m = $(this).attr("id");
+            $.ajax({
+                url: "modal_edit.php",
+                type: "GET",
+                data: {
+                    modal_id: m,
+                },
+                success: function(ajaxData) {
+                    $("#ModalEdit").html(ajaxData);
+                    $("#ModalEdit").modal('show', {
+                        backdrop: 'true'
+                    });
+                }
+            });
         });
     });
-});
-</script>
+    </script>
 
 
 
-</body>
+    </body>
 
-</html>
+    </html>

@@ -4,60 +4,54 @@ include 'header.php';
 
 ?>
 
-<div id="wrapper">
-
-
-    <div id="content-wrapper">
-
-        <div class="container">
-
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a class="btn" href="#">Dashboard</a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a class="btn" href="#prodi">Pilih Program Studi</a>
-                </li>
-            </ol>
-            <div class="row">
-                <div class="col-md-12 mb-3">
-                    <div class="card bg-light">
-                        <img class="card-img-top" src="holder.js/100x180/" alt="">
-                        <div class="card-body">
-                            <h4 class="card-title text-center">SISTEM PENDUKUNG KEPUTUSAN PEMILIHAN PROGRAM STUDI PADA
-                                PERGURUAN TINGGI SWASTA DI KOTA JAYAPURA MENGGUNAKAN METODE SMART BERBASIS WEB</h4>
-                            <div class="card">
-                                <img class="card-img-top" src="pts/logo.png" alt="">
-                            </div>
+<section id="portfolio" class="portfolio-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <div class="card bg-light">
+                    <img class="card-img-top" src="holder.js/100x180/" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title text-center">SISTEM PENDUKUNG KEPUTUSAN PEMILIHAN PROGRAM STUDI PADA
+                            PERGURUAN TINGGI SWASTA DI KOTA JAYAPURA MENGGUNAKAN METODE SMART BERBASIS WEB</h4>
+                        <div class="card">
+                            <img class="card-img-top" src="pts/logo.png" alt="">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> <!-- container -->
+</section>
 
-</div>
+<!--====== jquery js ======-->
+<script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
+<script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
 
-</div>
+<!--====== Bootstrap js ======-->
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
 
-<!-- Bootstrap core JavaScript-->
-<script src="pts/vendor/jquery/jquery.min.js"></script>
-<script src="pts/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!--====== Slick js ======-->
+<script src="assets/js/slick.min.js"></script>
 
-<!-- Core plugin JavaScript-->
-<script src="pts/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!--====== Isotope js ======-->
+<script src="assets/js/isotope.pkgd.min.js"></script>
 
-<!-- Page level plugin JavaScript-->
-<script src="pts/vendor/chart.js/Chart.min.js"></script>
-<script src="pts/vendor/datatables/jquery.dataTables.js"></script>
-<script src="pts/vendor/datatables/dataTables.bootstrap4.js"></script>
+<!--====== Images Loaded js ======-->
+<script src="assets/js/imagesloaded.pkgd.min.js"></script>
 
-<!-- Custom scripts for all pages-->
-<script src="pts/js/sb-admin.min.js"></script>
+<!--====== Magnific Popup js ======-->
+<script src="assets/js/jquery.magnific-popup.min.js"></script>
 
-<!-- Demo scripts for this page-->
-<script src="pts/js/demo/datatables-demo.js"></script>
-<script src="pts/js/demo/chart-area-demo.js"></script>
+<!--====== Scrolling js ======-->
+<script src="assets/js/scrolling-nav.js"></script>
+<script src="assets/js/jquery.easing.min.js"></script>
+
+<!--====== wow js ======-->
+<script src="assets/js/wow.min.js"></script>
+
+<!--====== Main js ======-->
+<script src="assets/js/main.js"></script>
 
 <!-- Javascript untuk popup modal Edit-->
 <script type="text/javascript">
@@ -80,9 +74,6 @@ $(document).ready(function() {
     });
 });
 </script>
-
-
-
 </body>
 
 </html>

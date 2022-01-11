@@ -41,31 +41,27 @@ if ($sql) {
 
     ?>
 
-<div id="wrapper">
+<section id="portfolio" class="portfolio-area">
+    <div class="container-fluid">
 
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="#">DATA</a>
+            </li>
+            <li class="breadcrumb-item active">Hasil Perhitungan</li>
+        </ol>
 
-    <div id="content-wrapper">
-
-        <div class="container-fluid">
-
-            <!-- Breadcrumbs-->
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a href="#">DATA</a>
-                </li>
-                <li class="breadcrumb-item active">Hasil Perhitungan</li>
-            </ol>
-
-            <!-- Icon Cards-->
+        <!-- Icon Cards-->
 
 
 
-            <!-- DataTables Example -->
-            <div class="card mb-3">
-                <div class="card-header">
-                </div>
-                <div class="card-body">
-
+        <!-- DataTables Example -->
+        <div class="card mb-3">
+            <div class="card-header">
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
                     <table class="text-center table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
@@ -98,108 +94,107 @@ if ($sql) {
 
                             <td><?php echo $dat['nama_pts'] ?></td>
                             <!-- <td>
-                                <?php
+                    <?php
 
-    ?>
-                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                    data-target="#testing">Detail</button>
+?>
+                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                        data-target="#testing">Detail</button>
 
-                                <div class="modal fade" id="testing" tabindex="-1" role="dialog"
-                                    aria-labelledby="modelTitleId" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Detail PTS</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form>
-                                                    <div class="form-group row">
-                                                        <label for="staticEmail"
-                                                            class="col-sm-4 col-form-label  text-left">Nama
-                                                            Universitas</label>
-                                                        <div class="col-sm-8">
-                                                            <textarea readonly
-                                                                class="form-control-plaintext">: <?=$dat['nama_pts'];?></textarea>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="staticEmail"
-                                                            class="col-sm-4 col-form-label  text-left">Akreditasi</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" readonly class="form-control-plaintext"
-                                                                id="staticEmail" value=": <?=$dat['akreditasi'];?>">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="staticEmail"
-                                                            class="col-sm-4 col-form-label  text-left">Alamat</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" readonly class="form-control-plaintext"
-                                                                id="staticEmail" value=": <?=$dat['alamat'];?>">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="staticEmail"
-                                                            class="col-sm-4 col-form-label  text-left">Kode
-                                                            Pos</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" readonly class="form-control-plaintext"
-                                                                id="staticEmail" value=": <?=$dat['kode_pos'];?>">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="staticEmail"
-                                                            class="col-sm-4 col-form-label  text-left">Telepon</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" readonly class="form-control-plaintext"
-                                                                id="staticEmail" value=": <?=$dat['no_telepon'];?>">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="staticEmail"
-                                                            class="col-sm-4 col-form-label  text-left">Email</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" readonly class="form-control-plaintext"
-                                                                id="staticEmail" value=": <?=$dat['email'];?>">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="staticEmail"
-                                                            class="col-sm-4 col-form-label  text-left">Website</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" readonly class="form-control-plaintext"
-                                                                id="staticEmail" value=": <?=$dat['laman_web'];?>">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="staticEmail"
-                                                            class="col-sm-4 col-form-label  text-left">Fasilitas</label>
-                                                        <div class="col-sm-8">
-                                                            <input type="text" readonly class="form-control-plaintext"
-                                                                id="staticEmail"
-                                                                value=": <?=$dat['fasilitas_kampus'];?>">
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">Close</button>
+                    <div class="modal fade" id="testing" tabindex="-1" role="dialog"
+                        aria-labelledby="modelTitleId" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Detail PTS</h5>
+                                    <button type="button" class="close" data-dismiss="modal"
+                                        aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="form-group row">
+                                            <label for="staticEmail"
+                                                class="col-sm-4 col-form-label  text-left">Nama
+                                                Universitas</label>
+                                            <div class="col-sm-8">
+                                                <textarea readonly
+                                                    class="form-control-plaintext">: <?=$dat['nama_pts'];?></textarea>
                                             </div>
                                         </div>
-                                    </div>
+                                        <div class="form-group row">
+                                            <label for="staticEmail"
+                                                class="col-sm-4 col-form-label  text-left">Akreditasi</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" readonly class="form-control-plaintext"
+                                                    id="staticEmail" value=": <?=$dat['akreditasi'];?>">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="staticEmail"
+                                                class="col-sm-4 col-form-label  text-left">Alamat</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" readonly class="form-control-plaintext"
+                                                    id="staticEmail" value=": <?=$dat['alamat'];?>">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="staticEmail"
+                                                class="col-sm-4 col-form-label  text-left">Kode
+                                                Pos</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" readonly class="form-control-plaintext"
+                                                    id="staticEmail" value=": <?=$dat['kode_pos'];?>">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="staticEmail"
+                                                class="col-sm-4 col-form-label  text-left">Telepon</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" readonly class="form-control-plaintext"
+                                                    id="staticEmail" value=": <?=$dat['no_telepon'];?>">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="staticEmail"
+                                                class="col-sm-4 col-form-label  text-left">Email</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" readonly class="form-control-plaintext"
+                                                    id="staticEmail" value=": <?=$dat['email'];?>">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="staticEmail"
+                                                class="col-sm-4 col-form-label  text-left">Website</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" readonly class="form-control-plaintext"
+                                                    id="staticEmail" value=": <?=$dat['laman_web'];?>">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="staticEmail"
+                                                class="col-sm-4 col-form-label  text-left">Fasilitas</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" readonly class="form-control-plaintext"
+                                                    id="staticEmail"
+                                                    value=": <?=$dat['fasilitas_kampus'];?>">
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
-                            </td> -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td> -->
                         </tbody>
                     </table>
-
                 </div>
-
             </div>
+
 
         </div>
         <!-- /.container-fluid -->
@@ -229,21 +224,8 @@ if ($sql) {
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
     </div>
-    <!-- /.content-wrapper -->
-
-</div>
-<!-- /#wrapper -->
+</section>
 
 <!-- Scroll to Top Button-->
 <a class="scroll-to-top rounded" href="#page-top">
@@ -251,25 +233,35 @@ if ($sql) {
 </a>
 
 
+<!--====== jquery js ======-->
+<script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
+<script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
 
-<!-- Bootstrap core JavaScript-->
-<script src="pts/vendor/jquery/jquery.min.js"></script>
-<script src="pts/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!--====== Bootstrap js ======-->
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
 
-<!-- Core plugin JavaScript-->
-<script src="pts/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!--====== Slick js ======-->
+<script src="assets/js/slick.min.js"></script>
 
-<!-- Page level plugin JavaScript-->
-<script src="pts/vendor/chart.js/Chart.min.js"></script>
-<script src="pts/vendor/datatables/jquery.dataTables.js"></script>
-<script src="pts/vendor/datatables/dataTables.bootstrap4.js"></script>
+<!--====== Isotope js ======-->
+<script src="assets/js/isotope.pkgd.min.js"></script>
 
-<!-- Custom scriKriteria for all pages-->
-<script src="pts/js/sb-admin.min.js"></script>
+<!--====== Images Loaded js ======-->
+<script src="assets/js/imagesloaded.pkgd.min.js"></script>
 
-<!-- Demo scriKriteria for this page-->
-<script src="pts/js/demo/datatables-demo.js"></script>
-<script src="pts/js/demo/chart-area-demo.js"></script>
+<!--====== Magnific Popup js ======-->
+<script src="assets/js/jquery.magnific-popup.min.js"></script>
+
+<!--====== Scrolling js ======-->
+<script src="assets/js/scrolling-nav.js"></script>
+<script src="assets/js/jquery.easing.min.js"></script>
+
+<!--====== wow js ======-->
+<script src="assets/js/wow.min.js"></script>
+
+<!--====== Main js ======-->
+<script src="assets/js/main.js"></script>
 
 <!-- Javascript untuk popup modal Edit-->
 <script type="text/javascript">

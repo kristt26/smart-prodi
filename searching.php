@@ -4,27 +4,22 @@ include 'header.php';
 
  ?>
 
-<div id="wrapper">
-
-
-    <div id="content-wrapper">
-
-        <div class="container">
-
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a class="btn" href="#">Dashboard</a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a class="btn" href="#prodi">Searhing</a>
-                </li>
-            </ol>
-            <div class="row">
-                <div class="col-md-12 mb-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="list-group">
-                                <?php
+<section id="portfolio" class="portfolio-area">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a class="btn" href="#">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a class="btn" href="#prodi">Searhing</a>
+            </li>
+        </ol>
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="list-group">
+                            <?php
                                     $text =  $_POST['textSearching'];
                                     include 'koneksi.php';
                                     $query = mysqli_query($conn, "SELECT * FROM pts WHERE nama_pts LIKE '%$text%'") or die();
@@ -34,67 +29,66 @@ include 'header.php';
                                         $dt = mysqli_query($conn, "SELECT * FROM pts where kd_pts = '$kode_pts'"); 
                                         $dat = mysqli_fetch_array($dt);
                                         ?>
-                                <button type="button" class="list-group-item list-group-item-action"><a
-                                        href="javascript:void();" data-toggle="modal"
-                                        data-target="#<?= $x['kd_pts']?>"><?= $x['nama_pts'];?></a></button>
-                                <div class="modal fade" id="<?= $x['kd_pts']?>" tabindex="-1" role="dialog"
-                                    aria-labelledby="modelTitleId" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg" role="document">
-                                        <div class="modal-content  bg-warning">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Detail PTS</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form>
-                                                    <table class="table table-bordered">
-                                                        <tr>
-                                                            <td width="30%">Nama Universitas</td>
-                                                            <td><?= $dat['nama_pts'];?></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Akreditasi</td>
-                                                            <td><?= $dat['akreditasi'];?></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Alamat</td>
-                                                            <td><?= $dat['alamat'];?></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Kode Pos</td>
-                                                            <td><?= $dat['kode_pos'];?></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Telepon</td>
-                                                            <td><?= $dat['no_telepon'];?></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Email</td>
-                                                            <td><?= $dat['email'];?></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Website</td>
-                                                            <td><?= $dat['laman_web'];?></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Fasilitas</td>
-                                                            <td><?= $dat['fasilitas_kampus'];?></td>
-                                                        </tr>
-                                                    </table>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Save</button>
-                                            </div>
+                            <button type="button" class="list-group-item list-group-item-action"><a
+                                    href="javascript:void();" data-toggle="modal"
+                                    data-target="#<?= $x['kd_pts']?>"><?= $x['nama_pts'];?></a></button>
+                            <div class="modal fade" id="<?= $x['kd_pts']?>" tabindex="-1" role="dialog"
+                                aria-labelledby="modelTitleId" aria-hidden="true">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content  bg-warning">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Detail PTS</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form>
+                                                <table class="table table-bordered">
+                                                    <tr>
+                                                        <td width="30%">Nama Universitas</td>
+                                                        <td><?= $dat['nama_pts'];?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Akreditasi</td>
+                                                        <td><?= $dat['akreditasi'];?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Alamat</td>
+                                                        <td><?= $dat['alamat'];?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Kode Pos</td>
+                                                        <td><?= $dat['kode_pos'];?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Telepon</td>
+                                                        <td><?= $dat['no_telepon'];?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Email</td>
+                                                        <td><?= $dat['email'];?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Website</td>
+                                                        <td><?= $dat['laman_web'];?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Fasilitas</td>
+                                                        <td><?= $dat['fasilitas_kampus'];?></td>
+                                                    </tr>
+                                                </table>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save</button>
                                         </div>
                                     </div>
                                 </div>
-                                <?php
+                            </div>
+                            <?php
                                         // echo "<br>";
                                     }
                                     $query = mysqli_query($conn, "SELECT
@@ -132,159 +126,163 @@ include 'header.php';
                                             }
                                         }
                                         ?>
-                                <button type="button" class="list-group-item list-group-item-action"><a
-                                        href="javascript:void();" data-toggle="modal"
-                                        data-target="#<?= $x['kd_prodi']?>"><?= $x['nama_prodi']?></a> | <a
-                                        href="javascript:void();" data-toggle="modal"
-                                        data-target="#<?= $x['kd_pts'].$x['kd_prodi']?>"><?= $x['nama_pts'];?></a></button>
-                                <div class="modal fade" id="<?= $x['kd_prodi']?>" tabindex="-1" role="dialog"
-                                    aria-labelledby="modelTitleId" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg" role="document">
-                                        <div class="modal-content bg-warning">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Detail Prodi</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form>
-                                                    <table class="table table-bordered">
-                                                        <tr>
-                                                            <td width="30%">Nama Prodi</td>
-                                                            <td><?= $datProdi['nama_prodi'];?></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td width="30%">Jenjang</td>
-                                                            <td><?= $datProdi['jenjang'];?></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td width="30%">Akreditasi</td>
-                                                            <td><?= $datProdi['akreditasi'];?></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td width="30%">Syarat Masuk</td>
-                                                            <td><?= $semua == 10 ? 'Semua Jurusan' : 'IPA, IPS, Bahasa'?>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td width="30%">SPP Per Semester</td>
-                                                            <td>Rp. <?= number_format($datProdi['spp'], '2', ',','.');?>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td width="30%">Visi</td>
-                                                            <td><?= $datProdi['visi'];?></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td width="30%">Misi</td>
-                                                            <td><?= $datProdi['misi'];?></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td width="30%">Profile Kelulusan</td>
-                                                            <td><?= $datProdi['kelebihan'];?></td>
-                                                        </tr>
-                                                    </table>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">Close</button>
-                                            </div>
+                            <button type="button" class="list-group-item list-group-item-action"><a
+                                    href="javascript:void();" data-toggle="modal"
+                                    data-target="#<?= $x['kd_prodi']?>"><?= $x['nama_prodi']?></a> | <a
+                                    href="javascript:void();" data-toggle="modal"
+                                    data-target="#<?= $x['kd_pts'].$x['kd_prodi']?>"><?= $x['nama_pts'];?></a></button>
+                            <div class="modal fade" id="<?= $x['kd_prodi']?>" tabindex="-1" role="dialog"
+                                aria-labelledby="modelTitleId" aria-hidden="true">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content bg-warning">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Detail Prodi</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form>
+                                                <table class="table table-bordered">
+                                                    <tr>
+                                                        <td width="30%">Nama Prodi</td>
+                                                        <td><?= $datProdi['nama_prodi'];?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="30%">Jenjang</td>
+                                                        <td><?= $datProdi['jenjang'];?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="30%">Akreditasi</td>
+                                                        <td><?= $datProdi['akreditasi'];?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="30%">Syarat Masuk</td>
+                                                        <td><?= $semua == 10 ? 'Semua Jurusan' : 'IPA, IPS, Bahasa'?>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="30%">SPP Per Semester</td>
+                                                        <td>Rp.
+                                                            <?= number_format($datProdi['spp'], '2', ',','.');?>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="30%">Visi</td>
+                                                        <td><?= $datProdi['visi'];?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="30%">Misi</td>
+                                                        <td><?= $datProdi['misi'];?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="30%">Profile Kelulusan</td>
+                                                        <td><?= $datProdi['kelebihan'];?></td>
+                                                    </tr>
+                                                </table>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close</button>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="modal fade" id="<?= $x['kd_pts'].$x['kd_prodi']?>" tabindex="-1"
-                                    role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg" role="document">
-                                        <div class="modal-content bg-warning">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Detail PTS</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form>
-                                                    <table class="table table-bordered">
-                                                        <tr>
-                                                            <td width="30%">Nama Universitas</td>
-                                                            <td><?= $dat['nama_pts'];?></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Akreditasi</td>
-                                                            <td><?= $dat['akreditasi'];?></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Alamat</td>
-                                                            <td><?= $dat['alamat'];?></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Kode Pos</td>
-                                                            <td><?= $dat['kode_pos'];?></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Telepon</td>
-                                                            <td><?= $dat['no_telepon'];?></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Email</td>
-                                                            <td><?= $dat['email'];?></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Website</td>
-                                                            <td><?= $dat['laman_web'];?></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Fasilitas</td>
-                                                            <td><?= $dat['fasilitas_kampus'];?></td>
-                                                        </tr>
-                                                    </table>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">Close</button>
-                                            </div>
+                            </div>
+                            <div class="modal fade" id="<?= $x['kd_pts'].$x['kd_prodi']?>" tabindex="-1" role="dialog"
+                                aria-labelledby="modelTitleId" aria-hidden="true">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content bg-warning">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Detail PTS</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form>
+                                                <table class="table table-bordered">
+                                                    <tr>
+                                                        <td width="30%">Nama Universitas</td>
+                                                        <td><?= $dat['nama_pts'];?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Akreditasi</td>
+                                                        <td><?= $dat['akreditasi'];?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Alamat</td>
+                                                        <td><?= $dat['alamat'];?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Kode Pos</td>
+                                                        <td><?= $dat['kode_pos'];?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Telepon</td>
+                                                        <td><?= $dat['no_telepon'];?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Email</td>
+                                                        <td><?= $dat['email'];?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Website</td>
+                                                        <td><?= $dat['laman_web'];?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Fasilitas</td>
+                                                        <td><?= $dat['fasilitas_kampus'];?></td>
+                                                    </tr>
+                                                </table>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close</button>
                                         </div>
                                     </div>
                                 </div>
-                                <?php
+                            </div>
+                            <?php
                                     }
                                 ?>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</section>
+<!--====== jquery js ======-->
+<script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
+<script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
 
+<!--====== Bootstrap js ======-->
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
 
-</div>
+<!--====== Slick js ======-->
+<script src="assets/js/slick.min.js"></script>
 
-</div>
+<!--====== Isotope js ======-->
+<script src="assets/js/isotope.pkgd.min.js"></script>
 
-<!-- Bootstrap core JavaScript-->
-<script src="pts/vendor/jquery/jquery.min.js"></script>
-<script src="pts/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!--====== Images Loaded js ======-->
+<script src="assets/js/imagesloaded.pkgd.min.js"></script>
 
-<!-- Core plugin JavaScript-->
-<script src="pts/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!--====== Magnific Popup js ======-->
+<script src="assets/js/jquery.magnific-popup.min.js"></script>
 
-<!-- Page level plugin JavaScript-->
-<script src="pts/vendor/chart.js/Chart.min.js"></script>
-<script src="pts/vendor/datatables/jquery.dataTables.js"></script>
-<script src="pts/vendor/datatables/dataTables.bootstrap4.js"></script>
+<!--====== Scrolling js ======-->
+<script src="assets/js/scrolling-nav.js"></script>
+<script src="assets/js/jquery.easing.min.js"></script>
 
-<!-- Custom scripts for all pages-->
-<script src="pts/js/sb-admin.min.js"></script>
+<!--====== wow js ======-->
+<script src="assets/js/wow.min.js"></script>
 
-<!-- Demo scripts for this page-->
-<script src="pts/js/demo/datatables-demo.js"></script>
-<script src="pts/js/demo/chart-area-demo.js"></script>
+<!--====== Main js ======-->
+<script src="assets/js/main.js"></script>
 
 <!-- Javascript untuk popup modal Edit-->
 <script type="text/javascript">
