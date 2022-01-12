@@ -1,60 +1,58 @@
-
-
 <?php 
 
 include 'head-nav.php';
 
  ?>
 
-    <div id="wrapper">
+<div id="wrapper">
 
-<?php 
+    <?php 
 
 include 'sidebar.php';
 
  ?>
 
-      <div id="content-wrapper">
+    <div id="content-wrapper">
 
         <div class="container-fluid">
 
-          <!-- Breadcrumbs-->
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-              <a href="#">DATA</a>
-            </li>
-            <li class="breadcrumb-item active">SUB KRITERIA</li>
-          </ol>
+            <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#">DATA</a>
+                </li>
+                <li class="breadcrumb-item active">SUB KRITERIA</li>
+            </ol>
 
-          <!-- Icon Cards-->
-          
+            <!-- Icon Cards-->
 
 
-          <!-- DataTables Example -->
-          <div class="card mb-3">
-            <div class="card-header">
-              DATA SUB KRITERIA
-              <a href="sub-kriteria.php" class="btn btn-success">
-              <i class="fas fa-pen"> </i>Tambah</a>
-            </div>
-            <div class="card-body">
-              <div class="table-responsive">
 
-                <table class="text-center table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>No.</th>
-                      <th>Kode Sub Kriteria</th>
-                      <th>Nama Kriteria</th>
-                      <th>Nama Sub Kriteria</th>
-                      <th>Nilai Sub Kriteria</th>
-                      <th>AKSI</th>
-                    </tr>
-                  </thead>
+            <!-- DataTables Example -->
+            <div class="card mb-3">
+                <div class="card-header">
+                    DATA SUB KRITERIA
+                    <a href="sub-kriteria.php" class="btn btn-success">
+                        <i class="fas fa-pen"> </i>Tambah</a>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
 
-                  <tbody>
+                        <table class="text-center table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Kode Sub Kriteria</th>
+                                    <th>Nama Kriteria</th>
+                                    <th>Nama Sub Kriteria</th>
+                                    <th>Nilai Sub Kriteria</th>
+                                    <th>AKSI</th>
+                                </tr>
+                            </thead>
 
-                <?php 
+                            <tbody>
+
+                                <?php 
                 include 'koneksi.php';
 
                 $no = 1;
@@ -65,126 +63,137 @@ include 'sidebar.php';
 
                  ?>
 
-                    <tr>
-                      <td><?php echo $no; ?></td>
-                      <td><?php echo $data['kd_sub']; ?></td>
-                      <td><?php echo $data['nama_kriteria']; ?></td>
-                      <td><?php echo $data['nama_sub']; ?></td>
-                      <td><?php echo $data['nilai']; ?></td>
-                      <td class="text-center">
-                        <a href="hapus.php?hapus3=<?php echo $data['kd_sub']; ?> " onclick="return confirm('Anda yakin untuk Hapus ini  ??')" title="Hapus">
-                          <button class="btn btn-sm btn-danger"><i class="fa fa-times"> </i></button>
-                        </a>
-<!-- 
+                                <tr>
+                                    <td><?php echo $no; ?></td>
+                                    <td><?php echo $data['kd_sub']; ?></td>
+                                    <td><?php echo $data['nama_kriteria']; ?></td>
+                                    <td>
+                                        <?= $data['nama_kriteria'] == "SPP" && ($data['nama_sub']>=2000000 && $data['nama_sub']<=3000000) ? "Rp. 2.000.000 - Rp. 3.000.000" : 
+                                          ($data['nama_kriteria'] == "SPP" && ($data['nama_sub']>3000000 && $data['nama_sub']<=4000000) ? "Rp. 3.100.000 - Rp. 4.000.000" : 
+                                          ($data['nama_kriteria'] == "SPP" && ($data['nama_sub']>4000000 && $data['nama_sub']<=5000000) ? "Rp. 4.100.000 - Rp. 5.000.000" : ($data['nama_sub'])))
+                                        ?>
+                                    </td>
+                                    <td><?php echo $data['nilai']; ?></td>
+                                    <td class="text-center">
+                                        <a href="hapus.php?hapus3=<?php echo $data['kd_sub']; ?> "
+                                            onclick="return confirm('Anda yakin untuk Hapus ini  ??')" title="Hapus">
+                                            <button class="btn btn-sm btn-danger"><i class="fa fa-times"> </i></button>
+                                        </a>
+                                        <!-- 
                         <a href="#" title="Edit" class='open_modal' id='<?php echo $data['0']; ?>' onclick="return confirm('Anda yakin untuk Edit ini  ??')">
                           <button class="btn btn-sm btn-info">
                             <i class="fa fa-edit"></i></button>
                         </a> -->
-                    </td>
+                                    </td>
 
-                    </tr>
-<?php $no++; } ?>
-                  </tbody>
+                                </tr>
+                                <?php $no++; } ?>
+                            </tbody>
 
-                </table>
+                        </table>
 
-              </div>
+                    </div>
+                </div>
+
             </div>
-
-          </div>
 
         </div>
         <!-- /.container-fluid -->
 
         <!-- Sticky Footer -->
         <footer class="sticky-footer">
-          <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-              <span>Copyright ©FYS</span>
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright ©FYS</span>
+                </div>
             </div>
-          </div>
         </footer>
 
-      </div>
-      <!-- /.content-wrapper -->
-
     </div>
-    <!-- /#wrapper -->
+    <!-- /.content-wrapper -->
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fas fa-angle-up"></i>
-    </a>
+</div>
+<!-- /#wrapper -->
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="logout.php">Logout</a>
-          </div>
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" href="logout.php">Logout</a>
+            </div>
         </div>
-      </div>
     </div>
+</div>
 
 
 
 
 
-<!-- Modal Popup untuk Edit--> 
+<!-- Modal Popup untuk Edit-->
 <div id="ModalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
 </div>
 
 
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Page level plugin JavaScript-->
-    <script src="vendor/chart.js/Chart.min.js"></script>
-    <script src="vendor/datatables/jquery.dataTables.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+<!-- Page level plugin JavaScript-->
+<script src="vendor/chart.js/Chart.min.js"></script>
+<script src="vendor/datatables/jquery.dataTables.js"></script>
+<script src="vendor/datatables/dataTables.bootstrap4.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin.min.js"></script>
 
-    <!-- Demo scripts for this page-->
-    <script src="js/demo/datatables-demo.js"></script>
-    <script src="js/demo/chart-area-demo.js"></script>
+<!-- Demo scripts for this page-->
+<script src="js/demo/datatables-demo.js"></script>
+<script src="js/demo/chart-area-demo.js"></script>
 
-            <!-- Javascript untuk popup modal Edit--> 
+<!-- Javascript untuk popup modal Edit-->
 <script type="text/javascript">
-   $(document).ready(function () {
-   $(".open_modal").click(function(e) {
-      var m = $(this).attr("id");
-       $.ajax({
-             url: "modal_edit.php",
-             type: "GET",
-             data : {modal_id: m,},
-             success: function (ajaxData){
-               $("#ModalEdit").html(ajaxData);
-               $("#ModalEdit").modal('show',{backdrop: 'true'});
-             }
-           });
+$(document).ready(function() {
+    $(".open_modal").click(function(e) {
+        var m = $(this).attr("id");
+        $.ajax({
+            url: "modal_edit.php",
+            type: "GET",
+            data: {
+                modal_id: m,
+            },
+            success: function(ajaxData) {
+                $("#ModalEdit").html(ajaxData);
+                $("#ModalEdit").modal('show', {
+                    backdrop: 'true'
+                });
+            }
         });
-      });
+    });
+});
 </script>
 
 
 
-  </body>
+</body>
 
 </html>

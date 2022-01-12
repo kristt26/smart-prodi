@@ -107,9 +107,11 @@ $kode = $uu['kd_prodi'];
 
 // $sql = mysqli_query($conn, "SELECT * FROM kriteria AS kr INNER JOIN alternatif_kriteria AS ak ON kr.kd_pts = ak.kd_pts where kd_prodi = '$kode' ");
 if($kd_prodi == ""){
+    $where = "LEFT JOIN `prodi` ON `prodi`.`kd_prodi` = `alternatif_kriteria`.`kd_prodi` where sub_a_kampus = '$nilai1' OR sub_a_prodi = '$nilai2'  OR sub_asal_jurusan = '$nilai3' OR sub_spp = '$nilai4'";
 $sql = mysqli_query($conn, "SELECT `alternatif_kriteria`.*,
-`prodi`.`kelebihan` FROM `alternatif_kriteria` LEFT JOIN `prodi` ON `prodi`.`kd_prodi` = `alternatif_kriteria`.`kd_prodi` where sub_a_kampus = '$nilai1' OR sub_a_prodi = '$nilai2'  OR sub_asal_jurusan = '$nilai3' OR sub_spp = '$nilai4'  ");
+`prodi`.`kelebihan` FROM `alternatif_kriteria` LEFT JOIN `prodi` ON `prodi`.`kd_prodi` = `alternatif_kriteria`.`kd_prodi` where sub_a_kampus = '$nilai1' OR sub_a_prodi = '$nilai2'  OR sub_asal_jurusan = '$nilai3' OR sub_spp = '$nilai4' ");
 }else {
+    $where = "LEFT JOIN `prodi` ON `prodi`.`kd_prodi` = `alternatif_kriteria`.`kd_prodi` where prodi.nama_prodi='$kd_prodi' AND  (sub_a_kampus = '$nilai1' OR sub_a_prodi = '$nilai2'  OR sub_asal_jurusan = '$nilai3' OR sub_spp = '$nilai4')";
 $sql = mysqli_query($conn, "SELECT `alternatif_kriteria`.*,
 `prodi`.`kelebihan` FROM `alternatif_kriteria` LEFT JOIN `prodi` ON `prodi`.`kd_prodi` = `alternatif_kriteria`.`kd_prodi` where prodi.nama_prodi='$kd_prodi' AND  (sub_a_kampus = '$nilai1' OR sub_a_prodi = '$nilai2'  OR sub_asal_jurusan = '$nilai3' OR sub_spp = '$nilai4') ");
 }
@@ -121,11 +123,11 @@ $normalAsalJurusan = $data[0]['asal_jurusan']/$data[0]['nilai_akhir'];
 $normalSpp = $data[0]['spp']/$data[0]['nilai_akhir'];
 $normalFasilitas = $data[0]['fasilitas']/$data[0]['nilai_akhir'];
 
-$sql1 = mysqli_query($conn, "SELECT MAX(sub_a_kampus) AS kode FROM alternatif_kriteria where sub_a_kampus = '$nilai1' OR sub_a_prodi = '$nilai2'  OR sub_asal_jurusan = '$nilai3' OR sub_spp = '$nilai4'");
-$sql2 = mysqli_query($conn, "SELECT MAX(sub_a_prodi) AS kode FROM alternatif_kriteria where sub_a_kampus = '$nilai1' OR sub_a_prodi = '$nilai2'  OR sub_asal_jurusan = '$nilai3' OR sub_spp = '$nilai4'");
-$sql3 = mysqli_query($conn, "SELECT MAX(sub_asal_jurusan) AS kode FROM alternatif_kriteria where sub_a_kampus = '$nilai1' OR sub_a_prodi = '$nilai2'  OR sub_asal_jurusan = '$nilai3' OR sub_spp = '$nilai4'");
-$sql4 = mysqli_query($conn, "SELECT MAX(sub_spp) AS kode FROM alternatif_kriteria where sub_a_kampus = '$nilai1' OR sub_a_prodi = '$nilai2'  OR sub_asal_jurusan = '$nilai3' OR sub_spp = '$nilai4'");
-$sql5 = mysqli_query($conn, "SELECT MAX(sub_fasilitas) AS kode FROM alternatif_kriteria where sub_a_kampus = '$nilai1' OR sub_a_prodi = '$nilai2'  OR sub_asal_jurusan = '$nilai3' OR sub_spp = '$nilai4'");
+$sql1 = mysqli_query($conn, "SELECT MAX(sub_a_kampus) AS kode FROM alternatif_kriteria ");
+$sql2 = mysqli_query($conn, "SELECT MAX(sub_a_prodi) AS kode FROM alternatif_kriteria ");
+$sql3 = mysqli_query($conn, "SELECT MAX(sub_asal_jurusan) AS kode FROM alternatif_kriteria ");
+$sql4 = mysqli_query($conn, "SELECT MAX(sub_spp) AS kode FROM alternatif_kriteria ");
+$sql5 = mysqli_query($conn, "SELECT MAX(sub_fasilitas) AS kode FROM alternatif_kriteria ");
 
 $cc1 = mysqli_fetch_array($sql1);
 $cc2 = mysqli_fetch_array($sql2);
@@ -139,11 +141,11 @@ $a3 = $cc3['kode'];
 $a4 = $cc4['kode'];
 $a5 = $cc5['kode'];
 
-$lqs1 = mysqli_query($conn, "SELECT MIN(sub_a_kampus) AS kode FROM alternatif_kriteria where sub_a_kampus = '$nilai1' OR sub_a_prodi = '$nilai2'  OR sub_asal_jurusan = '$nilai3' OR sub_spp = '$nilai4'");
-$lqs2 = mysqli_query($conn, "SELECT MIN(sub_a_prodi) AS kode FROM alternatif_kriteria where sub_a_kampus = '$nilai1' OR sub_a_prodi = '$nilai2'  OR sub_asal_jurusan = '$nilai3' OR sub_spp = '$nilai4'");
-$lqs3 = mysqli_query($conn, "SELECT MIN(sub_asal_jurusan) AS kode FROM alternatif_kriteria where sub_a_kampus = '$nilai1' OR sub_a_prodi = '$nilai2'  OR sub_asal_jurusan = '$nilai3' OR sub_spp = '$nilai4'");
-$lqs4 = mysqli_query($conn, "SELECT MIN(sub_spp) AS kode FROM alternatif_kriteria where sub_a_kampus = '$nilai1' OR sub_a_prodi = '$nilai2'  OR sub_asal_jurusan = '$nilai3' OR sub_spp = '$nilai4'");
-$lqs5 = mysqli_query($conn, "SELECT MIN(sub_fasilitas) AS kode FROM alternatif_kriteria where sub_a_kampus = '$nilai1' OR sub_a_prodi = '$nilai2'  OR sub_asal_jurusan = '$nilai3' OR sub_spp = '$nilai4'");
+$lqs1 = mysqli_query($conn, "SELECT MIN(sub_a_kampus) AS kode FROM alternatif_kriteria ");
+$lqs2 = mysqli_query($conn, "SELECT MIN(sub_a_prodi) AS kode FROM alternatif_kriteria ");
+$lqs3 = mysqli_query($conn, "SELECT MIN(sub_asal_jurusan) AS kode FROM alternatif_kriteria ");
+$lqs4 = mysqli_query($conn, "SELECT MIN(sub_spp) AS kode FROM alternatif_kriteria ");
+$lqs5 = mysqli_query($conn, "SELECT MIN(sub_fasilitas) AS kode FROM alternatif_kriteria ");
 
 $dd1 = mysqli_fetch_array($lqs1);
 $dd2 = mysqli_fetch_array($lqs2);
@@ -362,7 +364,8 @@ $no++;
                         <div class="card mb-3">
                             <div class="card-body">
                                 <?php 
-                                $q = mysqli_query($conn, "SELECT * FROM pts where kd_pts = '$kode' ");
+                                $kd_pts = $data['kd_pts'];
+                                $q = mysqli_query($conn, "SELECT * FROM pts where kd_pts = '$kd_pts' ");
                                 $kampus = mysqli_fetch_array($q);
                                 echo "<h5>". $data['nama_prodi'] . " | " . $kampus['nama_pts'] . "</h5><br>";
                                 echo "<h6>Kampus = ". $data['kampus'] . " = " . $data['sub_a_kampus'] . "</h6>";
